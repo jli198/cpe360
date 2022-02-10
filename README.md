@@ -2,4 +2,4 @@
 
 FYI: not all code compiles
 
-2/8/22: Trying to see how to integrate private files into separate branch that way like hw and test stuff can be accessible through github but not to publci while github hosts public repo
+2/8/22: Trying to see how to integrate private files into separate branch that way like hw and test stuff can be accessible through github but not to public while github hosts public repo
