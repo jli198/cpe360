@@ -5,7 +5,7 @@ class chromeTab {
 public:
   int length;
   int width;
-  chromeTab *next;
+  chromeTab *next;  //use this every time I want to make a new tab.
 
   chromeTab() {
     length = 40;
