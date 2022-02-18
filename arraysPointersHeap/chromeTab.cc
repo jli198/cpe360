@@ -10,7 +10,7 @@ public:
   chromeTab() {
     length = 40;
     width = 20;
-    next = NULL;
+    next = NULL; // NEW
   }
 };
 
@@ -22,8 +22,6 @@ int main() {
   p = new chromeTab; //create new chunks
   delete p; //delete chunk 'p' is pointing to
             //VERY IMP: this only delets chunk, NOT p
-
-
 
   //1. Get pointer
   //2. Use that to get "new" tab from heap
@@ -65,6 +63,40 @@ int main() {
   another->width = 200;
   cout << "Just checking, L: " << another->length << ", w: " << another->width
        << endl;
+
+// add something to FRONT: "temproary" pointer?
+// 1. get temp pointer to create new chunk
+// 2. connect this 'new' chunk to existing train
+// 3. get 'ptr' to connect to this 'new' chunk
+chromeTab *temp;
+temp = new chromeTab; // 1: done
+
+temp->next = ptr; // 2: done
+
+// ptr = temp; 3: get ptr to first chunk
+ptr->next = temp;
+
+chromeTab *exp;
+exp = new chromeTab;
+cout << "Before delete: " << exp << endl;
+delete exp;
+exp = new chromeTab;
+cout << "Trying again: " << exp->length << endl;
+
+// add new chunk to middle
+// basically this new chunk should be new "third" chunk
+temp = new chromeTab;
+temp -> next = ptr->next->next; // 2
+ptr->next->next = temp; // 3
+
+// display chunks
+temp = ptr;
+int count = 0;
+while (temp != NULL) {
+  cout << "Length: " << temp->length << endl;
+  cout << "Chunk #: " << ++count << endl;
+  temp = temp->next;
+}
 
   
 
