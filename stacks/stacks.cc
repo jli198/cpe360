@@ -41,6 +41,11 @@ public:
       top = temp;
     }
 
+    /* if( top != NULL) {
+      temp -> next = top;
+    }
+    top = temp */
+
     cout << "Just added new element: " << top -> value << endl;
   }
 
