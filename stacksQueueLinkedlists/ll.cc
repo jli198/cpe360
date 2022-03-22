@@ -47,7 +47,7 @@ public:
       return;
     }
   }
-  //2. Remoe: position
+  //2. Remove: position
   void removeFromPos(int pos) {
     
     if(pos <= size) {
