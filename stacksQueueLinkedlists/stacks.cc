@@ -31,7 +31,7 @@ public:
     Chunk *temp = new Chunk;
     temp->value = x;
 
-    // step 2: to amke this new chunk "first" chunk
+    // step 2: to make this new chunk "first" chunk
     // if stack is empty, make this first chunk. Else, move some pointers
     if(top == NULL) {
       top = temp; // that's it!
