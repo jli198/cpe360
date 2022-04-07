@@ -93,6 +93,37 @@ public:
 
 
   //4. Display contents: (a) in--, (b) pre--, (c) post-- order
+  void inOrder(TreeChunk *start) {
+    if(start == NULL) {
+      return;
+    }
+    else {
+      //left, root, right
+      inOrder(start->left);
+      cout << start->value << " " << endl;
+      inOrder(start->right);
+    }
+  }
+
+  void preOrder(TreeChunk *start) {
+    if(start == NULL)
+      return;
+    else {
+      cout << start->value << " " << endl;
+      preOrder(start->left);
+      preOrder(start->right);
+    }
+  }
+  void postOrder(TreeChunk *start) {
+    if(start==NULL)
+      return;
+    else {
+      postOrder(start->left);
+      postOrder(start->right);
+      cout << start->value << " " << endl;
+    }
+  }
+
 };
 
 int main() {
@@ -113,6 +144,9 @@ int main() {
   while(1) {
     cout << "Press 1 to add new value" << endl;
     cout << "Press 2 to search" << endl;
+    cout << "Press 3 for in-order" << endl;
+    cout << "Press 4 for pre-order" << endl;
+    cout << "Press 5 for post-order" << endl;
     cout << "(other options coming soon)" << endl;
     cin >> choice;
 
@@ -125,6 +159,15 @@ int main() {
       case 2: cout << "Search for what?" << endl;
               cin >> value;
               tree.searchBST(value, tree.root);
+              break;
+      
+      case 3: tree.inOrder(tree.root);
+              break;
+      
+      case 4: tree.preOrder(tree.root);
+              break;
+
+      case 5: tree.postOrder(tree.root);
               break;
 
       default: cout << "Goodbye!" << endl;
