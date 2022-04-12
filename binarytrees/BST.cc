@@ -90,7 +90,50 @@ public:
   }
 
   //3. Delete value (key)
+  void deleteNode(int key, TreeChunk *start) {
+    if(start == NULL) {
+      cout << "Can't find this value, will not delete" << endl;
+      return;
+    }
+    //step 1: search for value!
+    TreeChunk *slow, *fast;
+    slow = fast = start;
+    
+    while(key != fast->value && fast != NULL) {
+      slow = fast;
+      if(key > fast->value)
+        fast = fast-> right;
+      else
+        fast = fast->left;
+    }
+    if (fast == NULL) {
+      cout << "This value does not exist. Not deleting" << endl;
+      return;
+    }
+    if(key == fast->value) {
+      //found it! Yay
+      //so let's figure out what case are we dealing with
 
+      //Case I: leaf node, no children
+      if(fast->left == NULL && fast->right == NULL) {
+        cout << "Case I delete" << endl;
+        //if(slow-> right == fast) {
+          //slow->right == slow
+        }
+      }
+      //Case II: node with exactly one child
+      else if(fast->left == NULL && fast->right != NULL) {
+        cout << "Case II delete" << endl;
+      }
+      else if(fast->left == NULL && fast->right == NULL) {
+        cout << "Case II delete" << endl;
+      }
+      //Case III: node with two children
+      else {
+        cout << "Case III delete. fun fun fun" << endl;
+      }
+    }
+  }
 
   //4. Display contents: (a) in--, (b) pre--, (c) post-- order
   void inOrder(TreeChunk *start) {
@@ -147,7 +190,7 @@ int main() {
     cout << "Press 3 for in-order" << endl;
     cout << "Press 4 for pre-order" << endl;
     cout << "Press 5 for post-order" << endl;
-    cout << "(other options coming soon)" << endl;
+    cout << "Press 6 for deleting node" << endl;
     cin >> choice;
 
     switch(choice) {
@@ -168,6 +211,11 @@ int main() {
               break;
 
       case 5: tree.postOrder(tree.root);
+              break;
+
+      case 6: cout << "Delete what?" << endl;
+              cin >> value;
+              tree.deleteNode(value, tree.root);
               break;
 
       default: cout << "Goodbye!" << endl;
