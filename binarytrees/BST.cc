@@ -117,9 +117,6 @@ public:
       //Case I: leaf node, no children
       if(fast->left == NULL && fast->right == NULL) {
         cout << "Case I delete" << endl;
-        //if(slow-> right == fast) {
-          //slow->right == slow
-        }
       }
       //Case II: node with exactly one child
       else if(fast->left == NULL && fast->right != NULL) {
