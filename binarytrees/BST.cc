@@ -69,8 +69,8 @@ public:
       else
         slow->right = temp;
     }
-
   }
+
   //2. Search for value (key)
   void searchBST(int key, TreeChunk *start) {
     if(start == NULL) {
