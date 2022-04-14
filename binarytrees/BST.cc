@@ -99,7 +99,6 @@ public:
     return start->value;
   }
 
-  /*
   int maxValTree(TreeChunk *start) {
     if(start == NULL) {
       return -1;
@@ -109,7 +108,6 @@ public:
     }
     return start-> value;
   }
-  */
 
   //3. Delete value (key)
   void deleteNode(int key, TreeChunk *start) {
