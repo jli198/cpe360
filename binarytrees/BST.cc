@@ -279,7 +279,7 @@ int main() {
 
       case 5: tree.postOrder(tree.root);
               break;
-
+      
       case 6: cout << "Delete what?" << endl;
               cin >> value;
               tree.deleteNode(value, tree.root);
