@@ -231,7 +231,7 @@ int main() {
   int choice, value;
   BST tree;
   //jumpstart tree with values (like in slides)
-  //30, 15, 60, 7, 22, 45, 17, 27, 75
+  //30, 15, 60, 7, 22, 45, 17, 27, 75, 100, 1, 40, 50, 35, 42, 48, 55, 65
   tree.addValue(30);
   tree.addValue(15);
   tree.addValue(60);
