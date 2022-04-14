@@ -89,6 +89,28 @@ public:
     }
   }
 
+  int minValTree(TreeChunk *start) {
+    if(start == NULL) {
+      return -1;
+    }
+
+    while(start->left != NULL)
+      start = start->left;
+    return start->value;
+  }
+
+  /*
+  int maxValTree(TreeChunk *start) {
+    if(start == NULL) {
+      return -1;
+    }
+    while (start->right != NULL) {
+      start = start->right;
+    }
+    return start-> value;
+  }
+  */
+
   //3. Delete value (key)
   void deleteNode(int key, TreeChunk *start) {
     if(start == NULL) {
@@ -116,6 +138,7 @@ public:
 
       //Case I: leaf node, no children
       if(fast->left == NULL && fast->right == NULL) {
+        cout << "---------------" << endl;
         cout << "Case I delete" << endl;
         if(slow->left == fast) {
           slow->left = NULL;
@@ -137,7 +160,7 @@ public:
         }
         //what is slow->right == fast?
         else {
-          slow->right = fast;
+          slow->right = fast -> right;
         }
         cout << "About to delete: " << fast->value << endl;
         delete fast;
@@ -156,7 +179,16 @@ public:
       }
       //Case III: node with two children
       else {
-        cout << "Case III delete. fun fun fun" << endl;
+        cout << "--------------------------" << endl;
+        cout << "Case III delete. Fun fun fun" << endl;
+
+        //1. breathe
+        //2. don't actually delete this node
+        //3. we'll find value to swap with this node
+        //4. minValueRightSubtree
+        int swap = minValTree(fast->right); //swap = 35
+        fast->value = swap; //not valid BST, but hey we swapped!
+        deleteNode(swap, fast->right);
       }
     }
   }
@@ -211,6 +243,13 @@ int main() {
   tree.addValue(75);
   tree.addValue(100);
   tree.addValue(1);
+  tree.addValue(40);
+  tree.addValue(50);
+  tree.addValue(35);
+  tree.addValue(42);
+  tree.addValue(48);
+  tree.addValue(55);
+  tree.addValue(65);
   
   while(1) {
     cout << "Press 1 to add new value" << endl;
