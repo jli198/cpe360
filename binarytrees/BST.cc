@@ -117,13 +117,42 @@ public:
       //Case I: leaf node, no children
       if(fast->left == NULL && fast->right == NULL) {
         cout << "Case I delete" << endl;
+        if(slow->left == fast) {
+          slow->left = NULL;
+          cout << "About to delete: " << fast->value << endl;
+          delete fast; 
+        }
+        else {
+          slow->right = NULL;
+          cout << "About to delete: " << fast->value << endl;
+          delete fast;
+        }
       }
       //Case II: node with exactly one child
       else if(fast->left == NULL && fast->right != NULL) {
+        cout << "-----------------" << endl;
         cout << "Case II delete" << endl;
+        if(slow->left == fast) {
+          slow-> left = fast->right;
+        }
+        //what is slow->right == fast?
+        else {
+          slow->right = fast;
+        }
+        cout << "About to delete: " << fast->value << endl;
+        delete fast;
       }
       else if(fast->left == NULL && fast->right == NULL) {
+        cout << "=================" << endl;
         cout << "Case II delete" << endl;
+        if(slow->left == fast) {
+          slow->left = fast->left;
+        }
+        else {
+          slow->right = fast->left;
+        }
+        cout << "About to delete: " << fast->value << endl;
+        delete fast;
       }
       //Case III: node with two children
       else {
@@ -180,6 +209,8 @@ int main() {
   tree.addValue(17);
   tree.addValue(27);
   tree.addValue(75);
+  tree.addValue(100);
+  tree.addValue(1);
   
   while(1) {
     cout << "Press 1 to add new value" << endl;
