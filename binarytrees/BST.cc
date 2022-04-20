@@ -56,7 +56,7 @@ public:
     }
 
     //now check to see if fast is NULL
-    //that's godo news: we have found spot to add 'key'
+    //that's good news: we have found spot to add 'key'
     //slow will have address of new 'parent' to be
 
     if(fast == NULL) {
