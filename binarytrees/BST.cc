@@ -109,84 +109,85 @@ public:
     return start-> value;
   }
 
-  //3. Delete value (key)
-  void deleteNode(int key, TreeChunk *start) {
-    if(start == NULL) {
+  void deleteChunk(int key, TreeChunk *start) {
+    if (start == NULL) {
       cout << "Can't find this value, will not delete" << endl;
       return;
     }
-    //step 1: search for value!
+
+    // step 1: search for the value
     TreeChunk *slow, *fast;
     slow = fast = start;
-    
-    while(key != fast->value && fast != NULL) {
+
+    while (key != fast->value && fast != NULL) {
       slow = fast;
-      if(key > fast->value)
-        fast = fast-> right;
-      else
+      if (key > fast->value) {
+        fast = fast->right;
+      }
+      else {
         fast = fast->left;
+      }
     }
     if (fast == NULL) {
-      cout << "This value does not exist. Not deleting" << endl;
+      cout << "This value does not exitst, not deleting " << endl;
       return;
     }
-    if(key == fast->value) {
+    if (key == fast->value) {
       //found it! Yay
       //so let's figure out what case are we dealing with
 
       //Case I: leaf node, no children
-      if(fast->left == NULL && fast->right == NULL) {
+      if (fast->left == NULL && fast->right == NULL) {
         cout << "---------------" << endl;
-        cout << "Case I delete" << endl;
-        if(slow->left == fast) {
-          slow->left = NULL;
-          cout << "About to delete: " << fast->value << endl;
-          delete fast; 
-        }
-        else {
+        cout << "Case I Delete " << endl;
+        if (slow->right == fast) {
           slow->right = NULL;
-          cout << "About to delete: " << fast->value << endl;
+          cout << "About to delete: << " << fast->value << endl;
+          delete fast;
+        } 
+        else {
+          slow->left = NULL;
+          cout << "About to delete: << " << fast->value << endl;
+          delete fast;
+        }
+
+      }
+      //Case II: node with exactly one child
+      else if (fast->left == NULL && fast->right != NULL) {
+        cout << "---------------" << endl;
+        cout << "Case II Delete " << endl;
+        if (slow->left == fast) {  // test
+          slow->left = fast->right;
+          cout << "About to Delete " << fast->value << endl;
+          delete fast;
+        } else {
+          slow->right = fast->right;
+          cout << "About to Delete " << fast->value << endl;
+          delete fast;
+        }
+      } else if (fast->left != NULL && fast->right == NULL) {
+        cout << "---------------" << endl;
+        cout << "Case 2 Delete " << endl;
+        if (slow->left == fast) {  // test
+          slow->left = fast->left;
+          cout << "About to Delete " << fast->value << endl;
+          delete fast;
+        } else {
+          slow->right = fast->left;
+          cout << "About to Delete " << fast->value << endl;
           delete fast;
         }
       }
-      //Case II: node with exactly one child
-      else if(fast->left == NULL && fast->right != NULL) {
-        cout << "-----------------" << endl;
-        cout << "Case II delete" << endl;
-        if(slow->left == fast) {
-          slow-> left = fast->right;
-        }
-        //what is slow->right == fast?
-        else {
-          slow->right = fast -> right;
-        }
-        cout << "About to delete: " << fast->value << endl;
-        delete fast;
-      }
-      else if(fast->left == NULL && fast->right == NULL) {
-        cout << "=================" << endl;
-        cout << "Case II delete" << endl;
-        if(slow->left == fast) {
-          slow->left = fast->left;
-        }
-        else {
-          slow->right = fast->left;
-        }
-        cout << "About to delete: " << fast->value << endl;
-        delete fast;
-      }
-      //Case III: node with two children
+      // Case 3: node with two children
       else {
-        cout << "--------------------------" << endl;
-        cout << "Case III delete. Fun fun fun" << endl;
-
-        //1. breathe
-        //2. don't actually delete this node
-        //3. we'll find value to swap with this node
-        //4. minValueRightSubtree
-        int swap = minValTree(fast->right); //swap = 35
-        fast->value = swap; //not valid BST, but hey we swapped!
-        deleteNode(swap, fast->right);
+        cout << "---------------" << endl;
+        cout << "Case 3 Delete " << endl;
+        // 1. dont actually delete this node
+        // 2. find a value to swap with this node
+        // 4. minValueTree
+        int swap = minValTree(fast->right);  // swap 35
+        fast->value = swap;                  // Not a valid BST
+        deleteChunk(swap, fast->right);      // valid BST
       }
     }
   }
@@ -280,7 +281,7 @@ int main() {
       
       case 6: cout << "Delete what?" << endl;
               cin >> value;
-              tree.deleteNode(value, tree.root);
+              tree.deleteChunk(value, tree.root);
               break;
 
       default: cout << "Goodbye!" << endl;
