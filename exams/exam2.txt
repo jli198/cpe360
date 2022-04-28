@@ -1,0 +1,8 @@
+60% -> Regular
+*Traversals 
+*BSTs v/s Hash Tables (HT) v/s Linear
+*Sorting: Heap or Quick or Merge
+*HTs: show table with collision avoidance
+
+40% -> BSTs
+3-4 new functions
