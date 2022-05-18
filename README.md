@@ -1,4 +1,6 @@
-# cpe360
+# CPE 360: Course Info
+
+<center> test </center>
 
 FYI: code should compile but may not. THIS IS ONLY LECTURE MATERIAL so plz dont use for private assignments
 
