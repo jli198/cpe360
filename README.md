@@ -1,6 +1,6 @@
 # CPE 360: Course Info - Spring 2022
 
-![Stevens Logo](stevenslogo.png)
+![Stevens Logo](StevensLogo.webp)
 
 FYI: code should compile but may not. THIS IS ONLY LECTURE MATERIAL so plz dont use for private assignments. code may not be up to standards, lecture notes </br>
 </br>
